@@ -1,10 +1,9 @@
+import 'package:edmissions/themes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:lms/models/user.dart';
-import 'package:lms/views/home.dart';
-import 'package:lms/views/login.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+import 'home.dart';
+import 'login.dart';
 
 class SplashPage extends StatefulWidget {
   static String id = 'splashPage';
@@ -37,17 +36,12 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    // _user = Provider.of<CustomUser?>(context);
     return SafeArea(
         child: Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-          image: DecorationImage(
-              image: Image.asset('assets/images/background.jpg').image,
-              colorFilter: new ColorFilter.mode(
-                  Colors.black.withOpacity(0.3), BlendMode.dstATop),
-              fit: BoxFit.cover),
+          image: kBackgroundImage,
         ),
         child: Image.asset(
           'assets/images/logo_dark.png',

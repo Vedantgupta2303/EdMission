@@ -6,10 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polygon/flutter_polygon.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lms/constants.dart';
-import 'package:lms/widgets/clayContainerHighlight.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
-import 'package:fluttertoast/fluttertoast.dart';
+
+import '../constants.dart';
+import 'clayContainerHighlight.dart';
 
 class ActionFab extends StatefulWidget {
   @override
@@ -83,8 +83,7 @@ class _ActionFabState extends State<ActionFab>
       backgroundColor: isError ? Colors.green : Colors.redAccent,
       content: Text(
         content,
-        style: kPageSecondaryTextStyle.copyWith(
-            color: Colors.white, letterSpacing: 0.5),
+        style: kHeading4.copyWith(color: Colors.white, letterSpacing: 0.5),
       ),
     ));
   }

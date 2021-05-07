@@ -1,19 +1,17 @@
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lms/constants.dart';
-import 'package:lms/models/user.dart';
-import 'package:lms/views/tabs/user.dart';
-import 'package:lms/widgets/submitBtn.dart';
-import 'package:firebase_core/firebase_core.dart' as firebase_core;
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:provider/provider.dart';
-import 'package:path_provider/path_provider.dart';
-import 'dart:io';
+
+import '../constants.dart';
+import '../views/tabs/user.dart';
+import 'submitBtn.dart';
 
 class ImageUploader extends StatefulWidget {
   static String id = 'imageUpload';
@@ -70,7 +68,7 @@ class _ImageUploaderState extends State<ImageUploader> {
               children: [
                 Text(
                   'Pick an image',
-                  style: kPageTitleTextStyle,
+                  style: kHeading1,
                 ),
                 SizedBox(
                   height: 40,
@@ -95,7 +93,7 @@ class _ImageUploaderState extends State<ImageUploader> {
                 SizedBox(height: 50),
                 Text(
                   'Select an image source',
-                  style: kPageSecondaryTextStyle,
+                  style: kHeading4,
                 ),
                 SizedBox(height: 20),
                 Row(
@@ -192,8 +190,6 @@ class _ImageUploaderState extends State<ImageUploader> {
           (firebase_storage.TaskSnapshot snapshot) async {
         text = 'Uploading';
         var imgUrl = await snapshot.ref.getDownloadURL();
-        Provider.of<LMSUser>(context, listen: false)
-            .updateUserImgUrl(imgUrl: imgUrl);
       }, onError: (e) {
         // The final snapshot is also available on the task via `.snapshot`,
         // this can include 2 additional states, `TaskState.error` & `TaskState.canceled`
@@ -209,8 +205,6 @@ class _ImageUploaderState extends State<ImageUploader> {
           text = 'Uploaded';
         });
         showSnackBar(context, 'Successfully updated!', true);
-        Provider.of<LMSUser>(context, listen: false)
-            .updateImgaeLocal(imageFile!);
         // final String path = await getApplicationDocumentsDirectory().path;
 
 // copy the file to a new path

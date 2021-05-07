@@ -58,15 +58,15 @@ class Validator {
     return null;
   }
 
-  static String? validateRoll({required String roll}) {
-    RegExp emailRegExp = RegExp(r"[A-Z]{3}\/[0-9]{5}\/[0-9]{3}");
+  // static String? validateRoll({required String roll}) {
+  //   RegExp emailRegExp = RegExp(r"[A-Z]{3}\/[0-9]{5}\/[0-9]{3}");
 
-    if (roll.isEmpty) {
-      return 'Roll no. can\'t be empty';
-    } else if (!emailRegExp.hasMatch(roll)) {
-      return 'Please enter a valid Institute Roll no';
-    }
+  //   if (roll.isEmpty) {
+  //     return 'Roll no. can\'t be empty';
+  //   } else if (!emailRegExp.hasMatch(roll)) {
+  //     return 'Please enter a valid Institute Roll no';
+  //   }
 
-    return null;
-  }
+  //   return null;
+  // }
 }

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lms/services/auth.dart';
-import 'package:lms/services/validation.dart';
-import 'package:lms/views/home.dart';
-import 'package:lms/widgets/inputTextFields.dart';
-import 'package:lms/widgets/submitBtn.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
 
+import '../themes.dart';
+import '../services/auth.dart';
+import '../services/validation.dart';
+import '../widgets/inputTextFields.dart';
+import '../widgets/submitBtn.dart';
+import 'home.dart';
 import 'login.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -21,8 +22,8 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.blue[50],
-        statusBarIconBrightness: Brightness.dark));
+        statusBarColor: kStatusBarColor,
+        statusBarIconBrightness: kStatusBarIconBrightness));
     super.initState();
   }
 
@@ -60,11 +61,7 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
             height: MediaQuery.of(context).size.height,
             padding: EdgeInsets.only(left: 20, top: 20, right: 20),
             decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: Image.asset('assets/images/background.jpg').image,
-                  colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.3), BlendMode.dstATop),
-                  fit: BoxFit.cover),
+              image: kBackgroundImage,
             ),
             child: Form(
               key: _registerFormKey,

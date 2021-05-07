@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:lms/views/tabs/cart.dart';
-import 'package:lms/views/tabs/dashboard.dart';
-import 'package:lms/views/tabs/history.dart';
-import 'package:lms/views/tabs/user.dart';
+
+import '../views/tabs/cart.dart';
+import '../views/tabs/dashboard.dart';
+import '../views/tabs/history.dart';
+import '../views/tabs/user.dart';
 
 class TabViews extends ChangeNotifier {
   int selectedIndex = 0;

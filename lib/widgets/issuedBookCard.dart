@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/constants.dart';
+
+import '../constants.dart';
 
 class IssuedBookCard extends StatefulWidget {
   @override
@@ -28,11 +29,11 @@ class _IssuedBookCardState extends State<IssuedBookCard> {
         ),
         Text(
           'Fantastic Mr. Fox',
-          style: kPageHeading3TextStyle,
+          style: kHeading3,
         ),
         Row(
           children: [
-            Text('Chloe Hooper', style: kPageSecondaryTextStyle),
+            Text('Chloe Hooper', style: kHeading4),
             Icon(
               CupertinoIcons.star,
               color: Colors.amber[600],

@@ -1,25 +1,32 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lms/models/books.dart';
-import 'package:lms/models/tabs.dart';
-import 'package:lms/services/auth.dart';
-import 'package:lms/views/home.dart';
-import 'package:lms/views/login.dart';
-import 'package:lms/views/profile.dart';
-import 'package:lms/views/register.dart';
-import 'package:lms/views/splash.dart';
-import 'package:lms/widgets/imageUpload.dart';
 import 'package:provider/provider.dart';
-import 'package:lms/models/user.dart';
-import 'services/search.dart';
+
+import 'models/tabs.dart';
+import 'services/auth.dart';
+import 'themes.dart';
+import 'views/home.dart';
+import 'views/login.dart';
+import 'views/profile.dart';
+import 'views/register.dart';
+import 'views/splash.dart';
+import 'widgets/imageUpload.dart';
+
+/**
+ * Main File will be used for : 
+ * 1. Entry point for the entire application.
+ * 2. Initializing backend services in firebase.
+ * 3. Declaring providers for state management.
+ * 4. Declaring named routes.
+ */
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.blue[50],
-      statusBarIconBrightness: Brightness.dark));
+      statusBarColor: kStatusBarColor,
+      statusBarIconBrightness: kStatusBarIconBrightness));
   runApp(App());
 }
 
@@ -64,17 +71,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<TabViews>(
           create: (context) => TabViews(),
         ),
-        ChangeNotifierProvider<Search>(create: (context) => Search()),
-        ChangeNotifierProvider<LMSUser>(create: (context) => LMSUser()),
-        // ChangeNotifierProvider<AllFirebaseBooks>(
-        //     create: (context) => AllFirebaseBooks())
-        // StreamProvider<CustomUser?>.value(
-        //   value: _auth.authStateChanges,
-        //   initialData: CustomUser(
-        //       uid: _firebaseAuthUser.currentUser != null
-        //           ? _firebaseAuthUser.currentUser!.uid
-        //           : null),
-        // )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

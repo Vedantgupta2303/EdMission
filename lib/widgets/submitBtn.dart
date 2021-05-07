@@ -2,8 +2,9 @@ import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lms/constants.dart';
-import 'package:lms/widgets/clayContainerHighlight.dart';
+
+import '../constants.dart';
+import 'clayContainerHighlight.dart';
 
 class SubmitButton extends StatefulWidget {
   double height;
@@ -102,8 +103,7 @@ class _SubmitButtonState extends State<SubmitButton> {
                             child: Center(
                               child: Text(
                                 widget.number.toString(),
-                                style: kPageSecondaryTextStyle.copyWith(
-                                    color: Colors.white),
+                                style: kHeading4.copyWith(color: Colors.white),
                               ),
                             ))
                         : ClayContainerHighlight(

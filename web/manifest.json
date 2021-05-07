@@ -1,6 +1,6 @@
 {
-    "name": "lms",
-    "short_name": "lms",
+    "name": "EdMission",
+    "short_name": "EdMission",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

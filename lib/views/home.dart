@@ -1,14 +1,11 @@
+import 'package:edmissions/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:lms/models/books.dart';
-import 'package:lms/models/tabs.dart';
-import 'package:lms/models/user.dart';
-import 'package:lms/services/auth.dart';
-import 'package:lms/views/login.dart';
-import 'package:lms/widgets/fab.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
+
+import '../models/tabs.dart';
+import '../widgets/fab.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'homePage';
@@ -18,22 +15,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future<bool> loadUser() async {
-    bool isLoaded = true;
-    var result = await Provider.of<LMSUser>(context, listen: false)
-        .getUserFromFirebase(context);
-    // await Provider.of<AllFirebaseBooks>(context, listen: false)
-    //     .fetchAllFirebaseBooks();
-    if (!result) {
-      Fluttertoast.showToast(
-          msg: "Error connecting to the internet",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-      isLoaded = false;
-    }
+    /**
+     * TODO:
+     * Fetch user data/state to show within the application. show a network error toast in case, the data couldn't be loaded.
+     */
     return true;
   }
 
@@ -56,14 +41,7 @@ class _HomePageState extends State<HomePage> {
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height - 100,
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image:
-                                    Image.asset('assets/images/background.jpg')
-                                        .image,
-                                colorFilter: new ColorFilter.mode(
-                                    Colors.black.withOpacity(0.3),
-                                    BlendMode.dstATop),
-                                fit: BoxFit.cover),
+                            image: kBackgroundImage,
                           ),
                           child: Provider.of<TabViews>(context).getTabView(),
                         ),
@@ -123,11 +101,7 @@ class _HomePageState extends State<HomePage> {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(
-                  image: Image.asset('assets/images/background.jpg').image,
-                  colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.3), BlendMode.dstATop),
-                  fit: BoxFit.cover),
+              image: kBackgroundImage,
             ),
             child: Center(child: CircularProgressIndicator()),
           ));

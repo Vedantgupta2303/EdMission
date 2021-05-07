@@ -1,16 +1,17 @@
+import 'package:edmissions/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lms/constants.dart';
-import 'package:lms/services/validation.dart';
-import 'package:lms/views/home.dart';
-import 'package:lms/widgets/choiceButtons.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lms/services/auth.dart';
-import 'package:lms/views/register.dart';
-import 'package:lms/widgets/inputTextFields.dart';
-import 'package:lms/widgets/submitBtn.dart';
 import 'package:provider/provider.dart';
+
+import '../constants.dart';
+import '../services/auth.dart';
+import '../services/validation.dart';
+import '../widgets/choiceButtons.dart';
+import '../widgets/inputTextFields.dart';
+import '../widgets/submitBtn.dart';
+import 'home.dart';
+import 'register.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'loginPage';
@@ -53,11 +54,7 @@ class _BodyLoginPageState extends State<BodyLoginPage> {
             height: MediaQuery.of(context).size.height,
             padding: EdgeInsets.only(left: 20, top: 20, right: 20),
             decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: Image.asset('assets/images/background.jpg').image,
-                  colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.3), BlendMode.dstATop),
-                  fit: BoxFit.cover),
+              image: kBackgroundImage,
             ),
             child: Form(
               key: _signInFormKey,
@@ -66,12 +63,12 @@ class _BodyLoginPageState extends State<BodyLoginPage> {
                 children: [
                   Text(
                     'Login',
-                    style: kPageTitleTextStyle,
+                    style: kHeading1,
                   ),
                   Spacer(flex: 1),
                   Text(
                     'Access account',
-                    style: kPageSubtitleTextStyle,
+                    style: kHeading2,
                   ),
                   Spacer(
                     flex: 2,
@@ -105,7 +102,7 @@ class _BodyLoginPageState extends State<BodyLoginPage> {
                   ),
                   Text(
                     'or Login with Email',
-                    style: kPageSecondaryTextStyle,
+                    style: kHeading4,
                   ),
                   Spacer(
                     flex: 1,
@@ -114,7 +111,7 @@ class _BodyLoginPageState extends State<BodyLoginPage> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Email',
-                        style: kPageHeading3TextStyle,
+                        style: kHeading3,
                       )),
                   Spacer(
                     flex: 1,
@@ -132,7 +129,7 @@ class _BodyLoginPageState extends State<BodyLoginPage> {
                   ),
                   Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Password', style: kPageHeading3TextStyle)),
+                      child: Text('Password', style: kHeading3)),
                   Spacer(
                     flex: 1,
                   ),
@@ -182,7 +179,7 @@ class _BodyLoginPageState extends State<BodyLoginPage> {
                       children: [
                         Text(
                           "Don't have an account?",
-                          style: kPageSecondaryTextStyle,
+                          style: kHeading4,
                         ),
                         Text(
                           " Register",

@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/constants.dart';
-import 'package:lms/models/books.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../constants.dart';
+
 class ShelfBooksCard extends StatelessWidget {
-  FirebaseBooks firebaseBooks;
-  ShelfBooksCard({required this.firebaseBooks});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,10 +20,6 @@ class ShelfBooksCard extends StatelessWidget {
             margin: EdgeInsets.only(right: 10),
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-            child: Image.network(
-              firebaseBooks.imageLinks[0],
-              fit: BoxFit.fill,
-            ),
           ),
           Expanded(
             child: Column(
@@ -33,24 +27,24 @@ class ShelfBooksCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  firebaseBooks.categories.join(", "),
+                  '',
                   overflow: TextOverflow.ellipsis,
-                  style: kPageSubtitleTextStyle.copyWith(
+                  style: kHeading2.copyWith(
                       fontSize: 14, fontWeight: FontWeight.w300),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  firebaseBooks.title,
+                  '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: kPageHeading3TextStyle,
+                  style: kHeading3,
                 ),
                 Text(
-                  firebaseBooks.authors.join(","),
+                  '',
                   overflow: TextOverflow.ellipsis,
-                  style: kPageSecondaryTextStyle,
+                  style: kHeading4,
                 ),
                 Icon(CupertinoIcons.heart)
               ],
@@ -78,10 +72,8 @@ class ShelfBooksCard extends StatelessWidget {
                     ],
                   ),
                   progressColor: Colors.blueGrey,
-                  percent: firebaseBooks.availability / 10,
                   radius: 65,
                 ),
-                Text(firebaseBooks.availability.toString() + '/10')
               ],
             ),
           )

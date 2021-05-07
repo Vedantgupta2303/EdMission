@@ -1,21 +1,18 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:edmissions/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lms/constants.dart';
-import 'package:lms/models/user.dart';
-import 'package:lms/services/auth.dart';
-import 'package:lms/services/validation.dart';
-import 'package:lms/views/home.dart';
-import 'package:lms/views/login.dart';
-import 'package:lms/widgets/clayContainerHighlight.dart';
-import 'package:lms/widgets/imageUpload.dart';
-import 'package:lms/widgets/inputTextFields.dart';
-import 'package:lms/widgets/submitBtn.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
+
+import '../services/auth.dart';
+import '../services/validation.dart';
+import '../widgets/clayContainerHighlight.dart';
+import '../widgets/imageUpload.dart';
+import '../widgets/inputTextFields.dart';
+import '../widgets/submitBtn.dart';
+import 'home.dart';
 
 class ProfilePage extends StatefulWidget {
   static String id = 'profilePage';
@@ -32,28 +29,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
   final _registerFormKey = GlobalKey<FormState>();
 
-  void showSnackBar(BuildContext context, String content, bool isError) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: isError ? Colors.redAccent : Colors.green,
-      content: Text(
-        content,
-        style: TextStyle(color: Colors.white, letterSpacing: 0.5),
-      ),
-    ));
-  }
-
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    emailController.text = FirebaseAuth.instance.currentUser!.email ?? '';
-    var user = Provider.of<LMSUser>(context, listen: false);
-    var imageTitle =
-        FirebaseAuth.instance.currentUser!.email.toString().split('@')[0] +
-            '.jpg';
-    nameController.text = user.name;
-    rollController.text = user.rollNo;
-    phoneController.text = user.phone;
-    addressController.text = user.address;
+    /**
+     * Load user data and feed it into the profile page for editing purpose.
+     */
     return Scaffold(
       body: ModalProgressHUD(
         dismissible: false,
@@ -88,28 +69,19 @@ class _ProfilePageState extends State<ProfilePage> {
                       alignment: Alignment.center,
                       children: [
                         Container(
-                          clipBehavior: Clip.hardEdge,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Provider.of<LMSUser>(context, listen: false)
-                                      .imageFile ==
-                                  null
-                              ? CircleAvatar(
-                                  radius: 80,
-                                  backgroundColor: Colors.blueGrey.shade200,
-                                  child: Icon(
-                                    Icons.person,
-                                    color: Colors.white,
-                                    size: 100,
-                                  ),
-                                )
-                              : Image.file(
-                                  Provider.of<LMSUser>(context, listen: false)
-                                      .imageFile!,
-                                  fit: BoxFit.fill,
-                                ),
-                        ),
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: CircleAvatar(
+                              radius: 80,
+                              backgroundColor: Colors.blueGrey.shade200,
+                              child: Icon(
+                                Icons.person,
+                                color: Colors.white,
+                                size: 100,
+                              ),
+                            )),
                         Align(
                           alignment: Alignment.topRight,
                           child: ClayContainerHighlight(
@@ -182,18 +154,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   Spacer(
                     flex: 1,
                   ),
-                  InputTextField(
-                    validator: (value) => Validator.validateRoll(
-                      roll: value,
-                    ),
-                    textInputType: TextInputType.text,
-                    textEditingController: rollController,
-                    isPasswordField: false,
-                    color: Colors.white,
-                  ),
-                  Spacer(
-                    flex: 1,
-                  ),
                   Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -250,25 +210,21 @@ class _ProfilePageState extends State<ProfilePage> {
                         setState(() {
                           _isLoading = true;
                         });
-                        var lmsUser =
-                            Provider.of<LMSUser>(context, listen: false);
-                        lmsUser.updateUser(
-                            name: nameController.text,
-                            phone: phoneController.text,
-                            rollNo: rollController.text,
-                            address: addressController.text);
-                        var result =
-                            await LMSUser.setUserToFirebase(context, lmsUser);
+                        /**
+                         * TODO:
+                         * Update User profile info and then write the corresponding data into firebase.
+                         */
                         setState(() {
                           _isLoading = false;
                         });
+                        var result = true;
                         if (result) {
-                          showSnackBar(context, 'Updated Successfully', false);
+                          kShowSnackBar(context, 'Updated Successfully', true);
                           setState(() {});
                           Navigator.popAndPushNamed(context, HomePage.id);
                         } else {
-                          showSnackBar(
-                              context, 'An error occured, please retry!', true);
+                          kShowSnackBar(context,
+                              'An error occured, please retry!', false);
                         }
                       }
                     },

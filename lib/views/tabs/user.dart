@@ -3,14 +3,13 @@ import 'dart:ui';
 import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/constants.dart';
-import 'package:lms/models/user.dart';
-import 'package:lms/services/auth.dart';
-import 'package:lms/views/login.dart';
-import 'package:lms/views/profile.dart';
-import 'package:lms/widgets/clayContainerHighlight.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
+
+import '../../constants.dart';
+import '../../services/auth.dart';
+import '../../widgets/clayContainerHighlight.dart';
+import '../login.dart';
+import '../profile.dart';
 
 class UserTab extends StatefulWidget {
   @override
@@ -21,7 +20,10 @@ class _UserTabState extends State<UserTab> {
   bool _isSignedOut = false;
   @override
   Widget build(BuildContext context) {
-    var lmsUser = Provider.of<LMSUser>(context, listen: false);
+    /**
+     * TODO:
+     * fetch user details
+     */
     return SingleChildScrollView(
       padding: EdgeInsets.all(20),
       child: Column(
@@ -43,75 +45,6 @@ class _UserTabState extends State<UserTab> {
               getSignOutButton(),
             ],
           ),
-          Container(
-            padding: EdgeInsets.only(top: 30, left: 90, right: 90),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Provider.of<LMSUser>(context, listen: false).imageFile ==
-                      null
-                  ? CircleAvatar(
-                      radius: 60,
-                      backgroundColor: Colors.blueGrey.shade200,
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 100,
-                      ),
-                    )
-                  : Image.file(
-                      Provider.of<LMSUser>(context, listen: false).imageFile!,
-                      fit: BoxFit.fill,
-                    ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          UserInfoRow(subtitle: lmsUser.rollNo, title: "Roll no."),
-          UserInfoRow(subtitle: lmsUser.phone, title: "Phone"),
-          UserInfoRow(subtitle: lmsUser.email, title: "Email"),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: FrostedGlassUserInfo(
-                  color: Colors.greenAccent,
-                  title: 'Last Issued',
-                  subtitle: lmsUser.lastIssued,
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: FrostedGlassUserInfo(
-                  color: Colors.amberAccent,
-                  title: 'Fines Paid',
-                  subtitle: '₹ ' + lmsUser.dueFine.toString(),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          ListTile(
-            leading: Icon(CupertinoIcons.map),
-            tileColor: Colors.white,
-            title: Text('Address'),
-            subtitle: Text(
-              lmsUser.address,
-              overflow: TextOverflow.ellipsis,
-            ),
-          )
         ],
       ),
     );
@@ -193,7 +126,7 @@ class FrostedGlassUserInfo extends StatelessWidget {
                     Text(
                       title,
                       overflow: TextOverflow.ellipsis,
-                      style: kPageHeading3TextStyle.copyWith(
+                      style: kHeading3.copyWith(
                           color: Colors.white, fontWeight: FontWeight.w900),
                     ),
                     subtitle == ''
@@ -206,7 +139,7 @@ class FrostedGlassUserInfo extends StatelessWidget {
                         : Text(
                             subtitle,
                             overflow: TextOverflow.ellipsis,
-                            style: kPageSecondaryTextStyle,
+                            style: kHeading4,
                           )
                   ],
                 ),
@@ -237,12 +170,12 @@ class UserInfoRow extends StatelessWidget {
         tileColor: Colors.white,
         title: Text(
           title,
-          style: kPageHeading3TextStyle,
+          style: kHeading3,
         ),
         trailing: Text(
           subtitle,
           overflow: TextOverflow.ellipsis,
-          style: kPageSecondaryTextStyle,
+          style: kHeading4,
         ),
       ),
     );
