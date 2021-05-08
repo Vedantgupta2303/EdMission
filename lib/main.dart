@@ -1,3 +1,4 @@
+import 'package:edmissions/src/pages/index.dart';
 import 'package:edmissions/views/details.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -83,7 +84,8 @@ class MyApp extends StatelessWidget {
           HomePage.id: (context) => HomePage(),
           ProfilePage.id: (context) => ProfilePage(),
           ImageUploader.id: (context) => ImageUploader(),
-          SchoolDetailsPage.id: (context) => SchoolDetailsPage()
+          SchoolDetailsPage.id: (context) => SchoolDetailsPage(),
+          IndexPage.id: (context) => IndexPage()
         },
       ),
     );

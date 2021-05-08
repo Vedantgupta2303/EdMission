@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:clay_containers/widgets/clay_container.dart';
 import 'package:clipboard/clipboard.dart';
+import 'package:edmissions/src/pages/index.dart';
 import 'package:expansion_widget/expansion_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -365,6 +366,9 @@ class SchoolDetailsTopBar extends StatelessWidget {
           ),
           ClayContainerHighlight(
             iconData: CupertinoIcons.camera,
+            onTap: () {
+              Navigator.pushNamed(context, IndexPage.id);
+            },
           ),
         ],
       ),
