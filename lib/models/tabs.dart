@@ -7,9 +7,14 @@ import '../views/tabs/user.dart';
 
 class TabViews extends ChangeNotifier {
   int selectedIndex = 0;
-
+  bool showBottomNavigationBar = true;
   void setTabView(int i) {
     selectedIndex = i;
+    notifyListeners();
+  }
+
+  void setBottomNavigationBar(bool result) {
+    showBottomNavigationBar = result;
     notifyListeners();
   }
 

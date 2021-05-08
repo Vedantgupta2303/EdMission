@@ -37,47 +37,58 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height - 100,
-                          decoration: BoxDecoration(
-                            image: kBackgroundImage,
-                          ),
-                          child: Provider.of<TabViews>(context).getTabView(),
-                        ),
                         Expanded(
+                          flex: 15,
                           child: Container(
-                            width: double.infinity,
-                            color: Colors.white,
-                            child: Row(
-                              children: [
-                                BottomNavigationTabs(
-                                  index: 0,
-                                  iconData: CupertinoIcons.house_alt,
-                                ),
-                                BottomNavigationTabs(
-                                  index: 1,
-                                  iconData: CupertinoIcons.square_favorites_alt,
-                                ),
-                                Expanded(child: Container()),
-                                BottomNavigationTabs(
-                                  index: 2,
-                                  iconData: CupertinoIcons.cart,
-                                ),
-                                BottomNavigationTabs(
-                                  index: 3,
-                                  iconData: CupertinoIcons.person,
-                                ),
-                              ],
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height - 100,
+                            decoration: BoxDecoration(
+                              image: kBackgroundImage,
                             ),
+                            child: Provider.of<TabViews>(context).getTabView(),
                           ),
-                        )
+                        ),
+                        Provider.of<TabViews>(context, listen: false)
+                                .showBottomNavigationBar
+                            ? Expanded(
+                                flex: 2,
+                                child: Container(
+                                  width: double.infinity,
+                                  color: Colors.white,
+                                  child: Row(
+                                    children: [
+                                      BottomNavigationTabs(
+                                        index: 0,
+                                        iconData: CupertinoIcons.house_alt,
+                                      ),
+                                      BottomNavigationTabs(
+                                        index: 1,
+                                        iconData:
+                                            CupertinoIcons.square_favorites_alt,
+                                      ),
+                                      Expanded(child: Container()),
+                                      BottomNavigationTabs(
+                                        index: 2,
+                                        iconData: CupertinoIcons.cart,
+                                      ),
+                                      BottomNavigationTabs(
+                                        index: 3,
+                                        iconData: CupertinoIcons.person,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Container()
                       ],
                     ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: ActionFab(),
-                    )
+                    Provider.of<TabViews>(context, listen: false)
+                            .showBottomNavigationBar
+                        ? Container(
+                            margin: EdgeInsets.only(bottom: 20),
+                            child: ActionFab(),
+                          )
+                        : Container()
                   ],
                 ),
               ));

@@ -45,7 +45,7 @@ The second building 100 ft. loon was constructed and made available to start the
 
 final kShowToast = Fluttertoast.showToast(
     msg: "Copied!",
-    toastLength: Toast.LENGTH_LONG,
+    toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.BOTTOM,
     timeInSecForIosWeb: 1,
     backgroundColor: Colors.pink,

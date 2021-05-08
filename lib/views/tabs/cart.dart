@@ -1,11 +1,18 @@
 import 'package:clay_containers/widgets/clay_container.dart';
+import 'package:edmissions/models/tabs.dart';
+import 'package:edmissions/services/validation.dart';
+import 'package:edmissions/views/home.dart';
+import 'package:edmissions/widgets/inputTextFields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../../constants.dart';
 import '../../widgets/clayContainerHighlight.dart';
 import '../../widgets/submitBtn.dart';
 import 'user.dart';
+import '../details.dart';
 
 class CartTab extends StatefulWidget {
   @override
@@ -13,120 +20,282 @@ class CartTab extends StatefulWidget {
 }
 
 class _CartTabState extends State<CartTab> {
+  late Razorpay razorpay;
+  TextEditingController textEditingController = new TextEditingController();
+  bool isFinancialAidAvailable = false;
+  final Slots = [
+    'Upto ₹ 2.5 lakhs',
+    '₹ 2.5 - ₹ 5 lakhs',
+    '₹ 5 - ₹ 10 lakhs',
+    'Greater than ₹ 10 lakhs'
+  ];
+
+  final interview = ['Yes', 'No'];
+  var selectedSlot;
+  var selectedInterview;
+
+  @override
+  void initState() {
+    super.initState();
+
+    selectedSlot = Slots[0];
+    selectedInterview = interview[0];
+
+    razorpay = new Razorpay();
+
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, handlerPaymentSuccess);
+    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, handlerErrorFailure);
+    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, handlerExternalWallet);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    razorpay.clear();
+  }
+
+  void openCheckout() {
+    var options = {
+      "key": "rzp_test_suOCdVWC1AOACo",
+      "amount": num.parse(textEditingController.text.substring(10)) * 100,
+      "name": "EdMissions",
+      "description": "One-Time Payment for Common Admission Form.",
+      "prefill": {"contact": "9576983316", "email": "support@edmissions.com"},
+      "external": {
+        "wallets": ["paytm"]
+      }
+    };
+
+    try {
+      razorpay.open(options);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  void handlerPaymentSuccess() {
+    print("Pament success");
+    kShowSnackBar(context, "Payment successful!", true);
+  }
+
+  void handlerErrorFailure() {
+    print("Pament error");
+    kShowSnackBar(context, "Payment unsuccessful!", false);
+  }
+
+  void handlerExternalWallet() {
+    print("External Wallet");
+    kShowSnackBar(context, "Opening External Wallet", true);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Cart',
-                style: kHeading1,
-              ),
-              ClayContainer(
-                  color: Colors.green,
-                  parentColor: Color(0xffF2F7FC),
-                  depth: 2,
-                  width: 100,
-                  height: 40,
-                  borderRadius: 15,
-                  child: Center(
-                    child: Text(
-                      " ",
-                      style: kHeading3.copyWith(color: Colors.white),
+    textEditingController.text = 'Total : ₹ 1500';
+    return Stack(
+      alignment:
+          isFinancialAidAvailable ? Alignment.bottomCenter : Alignment.topLeft,
+      children: [
+        SingleChildScrollView(
+          padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 100),
+          child: Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    !isFinancialAidAvailable
+                        ? Container()
+                        : Container(
+                            margin: EdgeInsets.only(right: 20),
+                            child: ClayContainerHighlight(
+                              iconData: CupertinoIcons.arrow_left,
+                              onTap: () {
+                                setState(() {
+                                  isFinancialAidAvailable = false;
+                                  Provider.of<TabViews>(context, listen: false)
+                                      .setBottomNavigationBar(true);
+                                });
+                              },
+                            ),
+                          ),
+                    Text(
+                      'Payment',
+                      style: kHeading1,
                     ),
-                  ))
-            ],
+                    Spacer(),
+                    ClayContainer(
+                        color: Colors.red,
+                        parentColor: Color(0xffF2F7FC),
+                        depth: 2,
+                        width: 100,
+                        height: 40,
+                        borderRadius: 15,
+                        child: Center(
+                          child: Text(
+                            "Pending",
+                            style: kHeading3.copyWith(color: Colors.white),
+                          ),
+                        ))
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: Icon(CupertinoIcons.arrow_up_doc_fill,
+                          color: Colors.green.shade300),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Common Admission Form Fee',
+                      style: kHeading4.copyWith(fontSize: 16),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  children: [
+                    InputTextField(
+                      isDisabled: true,
+                      isPasswordField: true,
+                      validator: (value) => Validator.validateName(
+                          name: textEditingController.text),
+                      color: Color(0xffF2F7FC),
+                      textEditingController: textEditingController,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Checkbox(
+                            activeColor: Colors.amber,
+                            value: isFinancialAidAvailable,
+                            onChanged: (value) {
+                              setState(() {
+                                isFinancialAidAvailable = value!;
+                                Provider.of<TabViews>(context, listen: false)
+                                    .setBottomNavigationBar(
+                                        !isFinancialAidAvailable);
+                              });
+                            }),
+                        Text(
+                          'Request Financial aid',
+                          style: kHeading4,
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    isFinancialAidAvailable
+                        ? Column(
+                            children: [
+                              TextFormField(
+                                maxLines: 5,
+                                style: TextStyle(
+                                    color: Color(0xff6683AB),
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),
+                                cursorRadius: Radius.circular(4),
+                                cursorHeight: 20,
+                                decoration: InputDecoration(
+                                    alignLabelWithHint: true,
+                                    border: OutlineInputBorder(),
+                                    hintText:
+                                        'Please help us understand in atleast 100 words.',
+                                    labelStyle: TextStyle(
+                                        color: Colors.amber.shade800,
+                                        fontSize: 16),
+                                    hintStyle: kHeading4,
+                                    labelText:
+                                        'Why did you opt for Financial Aid* '),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              InformationTile(
+                                  content: ListView.builder(
+                                      physics: NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemCount: Slots.length,
+                                      itemBuilder: (context, index) {
+                                        return RadioListTile(
+                                          dense: true,
+                                          activeColor: Colors.green,
+                                          title: Text(
+                                            Slots[index].toString(),
+                                            style: kHeading4,
+                                          ),
+                                          value: Slots[index],
+                                          groupValue: selectedSlot,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              selectedSlot = value;
+                                            });
+                                          },
+                                        );
+                                      }),
+                                  title: 'Select annual family income',
+                                  isExpanded: true),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              InformationTile(
+                                  content: ListView.builder(
+                                      physics: NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemCount: interview.length,
+                                      itemBuilder: (context, index) {
+                                        return RadioListTile(
+                                          dense: true,
+                                          activeColor: Colors.green,
+                                          title: Text(
+                                            interview[index].toString(),
+                                            style: kHeading4,
+                                          ),
+                                          value: interview[index],
+                                          groupValue: selectedSlot,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              selectedSlot = value;
+                                            });
+                                          },
+                                        );
+                                      }),
+                                  title: 'Are you ready for an interview?',
+                                  isExpanded: false),
+                              SizedBox(
+                                height: 40,
+                              ),
+                            ],
+                          )
+                        : SubmitButton(
+                            text: 'Checkout',
+                            onTap: () {
+                              openCheckout();
+                            }),
+                  ],
+                )
+              ],
+            ),
           ),
-          // SizedBox(
-          //   height: 20,
-          // ),
-          // Container(
-          //   child: ListView.builder(
-          //       itemCount: 4,
-          //       shrinkWrap: true,
-          //       physics: NeverScrollableScrollPhysics(),
-          //       itemBuilder: (context, index) {
-          //         return Container(
-          //           clipBehavior: Clip.antiAlias,
-          //           margin: EdgeInsets.only(bottom: 10),
-          //           width: double.infinity,
-          //           decoration: BoxDecoration(
-          //             color: Colors.white,
-          //             boxShadow: [
-          //               BoxShadow(
-          //                 color: Color(0xff6683AB).withOpacity(0.2),
-          //                 offset: const Offset(
-          //                   0.0,
-          //                   0.0,
-          //                 ),
-          //                 blurRadius: 15.0,
-          //                 spreadRadius: 2.0,
-          //               ), //BoxShadow
-          //               BoxShadow(
-          //                 color: Colors.white,
-          //                 offset: const Offset(0.0, 0.0),
-          //                 blurRadius: 1.0,
-          //                 spreadRadius: 0.0,
-          //               ), //BoxShadow
-          //             ],
-          //             borderRadius: BorderRadius.circular(10),
-          //           ),
-          //           child: ListTile(
-          //             tileColor: Color(0xffF2F7FC),
-          //             dense: true,
-          //             title: Text(
-          //               'Java the Complete Reference',
-          //               overflow: TextOverflow.ellipsis,
-          //               style: kHeading3,
-          //             ),
-          //             subtitle: Text(
-          //               'Herbert Schlidt',
-          //               style: kHeading4,
-          //             ),
-          //             trailing: ClayContainerHighlight(
-          //               iconData: CupertinoIcons.arrow_right,
-          //             ),
-          //             leading: Image.network(
-          //                 "https://images-na.ssl-images-amazon.com/images/I/618YQosPQTL.jpg"),
-          //           ),
-          //         );
-          //       }),
-          // ),
-          // SizedBox(height: 10),
-          // SubmitButton(text: 'Checkout', onTap: () {}),
-          // SizedBox(height: 20),
-          // Divider(
-          //   color: Colors.blueGrey,
-          //   height: 2,
-          //   thickness: 2,
-          // ),
-          // SizedBox(height: 20),
-          // Text(
-          //   'Wishlist',
-          //   style: kHeading3,
-          // ),
-          // SizedBox(height: 20),
-          // ListView.builder(
-          //     itemCount: 2,
-          //     shrinkWrap: true,
-          //     physics: NeverScrollableScrollPhysics(),
-          //     itemBuilder: (context, index) {
-          //       return Container(
-          //         margin: EdgeInsets.only(bottom: 20),
-          //         child: FrostedGlassUserInfo(
-          //             showActionButton: true,
-          //             color: Colors.pink.shade200,
-          //             title: 'Java the complete reference',
-          //             subtitle: 'Herbert Schlidt'),
-          //       );
-          //     })
-        ],
-      ),
+        ),
+        isFinancialAidAvailable
+            ? Container(
+                padding: EdgeInsets.all(20),
+                child: SubmitButton(
+                    pColor: Colors.green, text: 'Submit Request', onTap: () {}))
+            : Container()
+      ],
     );
   }
 }
