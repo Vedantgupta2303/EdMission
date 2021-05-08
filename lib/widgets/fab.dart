@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polygon/flutter_polygon.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:qrscan/qrscan.dart' as scanner;
 
 import '../constants.dart';
 import 'clayContainerHighlight.dart';
@@ -91,14 +90,7 @@ class _ActionFabState extends State<ActionFab>
   Widget qrCodeScanner() {
     return Container(
       child: ClayContainerHighlight(
-          onTap: () async {
-            ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("Place QR code within the frame")));
-            String cameraScanResult = await scanner.scan();
-            showSnackBar(
-                context, "ISBN: " + cameraScanResult.toString(), false);
-          },
-          iconData: CupertinoIcons.qrcode_viewfinder),
+          onTap: () async {}, iconData: CupertinoIcons.qrcode_viewfinder),
     );
   }
 
@@ -123,8 +115,6 @@ class _ActionFabState extends State<ActionFab>
           if (pickedFile != null) {
             _image = File(pickedFile.path);
             Uint8List bytes = _image.readAsBytesSync();
-            String barcode = await scanner.scanBytes(bytes);
-            print(barcode);
           } else {
             print('No image selected.');
           }
