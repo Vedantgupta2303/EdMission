@@ -31,8 +31,9 @@
     <a href="https://github.com/Vedantgupta2303/EdMission/issues/new">Report Bug</a>
     ·
     <a href="https://github.com/Vedantgupta2303/EdMission/issues/new">Request Feature</a>
-    .
+    ·
     <a href="https://docs.google.com/document/d/1AvjmpZW3YEtSYxRsifFd0P2zuNfmUMBU4deRhDOUBUI/edit?usp=sharing">Project Report</a>
+    ·
   </p>
 </p>
 
@@ -133,4 +134,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [issues-shield]: https://img.shields.io/github/issues/Vedantgupta2303/EdMission.svg?style=for-the-badge
 [issues-url]: https://github.com/Vedantgupta2303/EdMission/issues
 [license-shield]: https://img.shields.io/github/license/Vedantgupta2303/EdMission.svg?style=for-the-badge
-[license-url]: https://github.com/Vedantgupta2303/EdMission/blob/master/LICENSE
+[license-url]: https://github.com/Vedantgupta2303/EdMission/blob/master/LICENSE.txt
