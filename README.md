@@ -94,6 +94,8 @@ The drive link to the latest APK can be found [here](https://drive.google.com/fi
 
 See the [open issues](https://github.com/Vedantgupta2303/EdMission) for a list of proposed features (and known issues).
 
+## VIDEOS
+Videos link - (https://drive.google.com/drive/folders/137D3G1EARbrB94Wq3GHeIZF4SMmPG8Gz?usp=sharing)
 
 
 <!-- CONTRIBUTING -->
