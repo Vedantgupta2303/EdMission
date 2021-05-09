@@ -97,7 +97,7 @@ See the [open issues](https://github.com/Vedantgupta2303/EdMission) for a list o
 ## VIDEOS
 Videos link - https://drive.google.com/drive/folders/137D3G1EARbrB94Wq3GHeIZF4SMmPG8Gz?usp=sharing
 
-##Documentation
+## Documentation
 
 Full Documentation link - https://drive.google.com/drive/folders/1pDv3n2dx5G_JS0EMnMxtRtZ7yvmB8THu
 
