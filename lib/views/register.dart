@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
 
-import '../themes.dart';
 import '../services/auth.dart';
 import '../services/validation.dart';
+import '../themes.dart';
 import '../widgets/inputTextFields.dart';
 import '../widgets/submitBtn.dart';
 import 'home.dart';

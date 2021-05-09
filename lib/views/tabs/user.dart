@@ -10,6 +10,7 @@ import '../../services/auth.dart';
 import '../../widgets/clayContainerHighlight.dart';
 import '../login.dart';
 import '../profile.dart';
+import '../details.dart';
 
 class UserTab extends StatefulWidget {
   @override
@@ -28,23 +29,91 @@ class _UserTabState extends State<UserTab> {
       padding: EdgeInsets.all(20),
       child: Column(
         children: [
+          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+            ClayContainerHighlight(
+              isSpreadAllowed: true,
+              iconData: CupertinoIcons.pencil,
+              onTap: () {
+                Navigator.pushNamed(context, ProfilePage.id);
+                setState(() {});
+              },
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            getSignOutButton()
+          ]),
+          Container(
+            padding: EdgeInsets.only(top: 30, left: 90, right: 90),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Container(
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Image.asset(
+                "assets/images/dp.jpg",
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          //user info
+          InformationTile(
+              content: Column(
+                children: [
+                  CopiableContacts(
+                      icondata: CupertinoIcons.phone,
+                      content: '(+91) 0651-2446649'),
+                  CopiableContacts(
+                      icondata: CupertinoIcons.videocam, content: '2osjJF7Guw'),
+                  CopiableContacts(
+                      icondata: CupertinoIcons.envelope,
+                      content: 'stthomasschoolranchi@gmail.com'),
+                ],
+              ),
+              title: 'Contact Details',
+              isExpanded: true),
+          SizedBox(
+            height: 20,
+          ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              ClayContainerHighlight(
-                isSpreadAllowed: true,
-                iconData: CupertinoIcons.pencil,
-                onTap: () {
-                  Navigator.pushNamed(context, ProfilePage.id);
-                  setState(() {});
-                },
+              Expanded(
+                child: FrostedGlassUserInfo(
+                  color: Colors.orangeAccent,
+                  title: 'Payment',
+                  subtitle: 'Not Paid',
+                ),
               ),
               SizedBox(
                 width: 20,
               ),
-              getSignOutButton(),
+              Expanded(
+                child: FrostedGlassUserInfo(
+                  color: Colors.greenAccent,
+                  title: 'Application',
+                  subtitle: 'Filled',
+                ),
+              ),
             ],
           ),
+          SizedBox(
+            height: 20,
+          ),
+          ListTile(
+            leading: Icon(CupertinoIcons.map),
+            tileColor: Colors.white,
+            title: Text('Address'),
+            subtitle: Text(
+              '20 , Mallam Market, Grant Road X Lane, Grant Road',
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
         ],
       ),
     );

@@ -90,7 +90,7 @@ class _ActionFabState extends State<ActionFab>
   Widget qrCodeScanner() {
     return Container(
       child: ClayContainerHighlight(
-          onTap: () async {}, iconData: CupertinoIcons.qrcode_viewfinder),
+          onTap: () async {}, iconData: CupertinoIcons.printer),
     );
   }
 
@@ -100,7 +100,7 @@ class _ActionFabState extends State<ActionFab>
         onTap: () {
           print('bar');
         },
-        iconData: CupertinoIcons.barcode_viewfinder,
+        iconData: CupertinoIcons.share,
       ),
     );
   }
@@ -108,18 +108,8 @@ class _ActionFabState extends State<ActionFab>
   Widget imageScanner() {
     return Container(
       child: ClayContainerHighlight(
-        onTap: () async {
-          print('image');
-          final pickedFile = await picker.getImage(source: ImageSource.gallery);
-          File _image;
-          if (pickedFile != null) {
-            _image = File(pickedFile.path);
-            Uint8List bytes = _image.readAsBytesSync();
-          } else {
-            print('No image selected.');
-          }
-        },
-        iconData: CupertinoIcons.doc_text_viewfinder,
+        onTap: () {},
+        iconData: Icons.search,
       ),
     );
   }

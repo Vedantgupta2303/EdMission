@@ -1,5 +1,5 @@
-import 'package:edmissions/src/pages/index.dart';
-import 'package:edmissions/views/details.dart';
+import 'package:edmissions/views/question.dart';
+import 'package:edmissions/views/tabs/history.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,9 @@ import 'package:provider/provider.dart';
 
 import 'models/tabs.dart';
 import 'services/auth.dart';
+import 'src/pages/index.dart';
 import 'themes.dart';
+import 'views/details.dart';
 import 'views/home.dart';
 import 'views/login.dart';
 import 'views/profile.dart';
@@ -85,7 +87,8 @@ class MyApp extends StatelessWidget {
           ProfilePage.id: (context) => ProfilePage(),
           ImageUploader.id: (context) => ImageUploader(),
           SchoolDetailsPage.id: (context) => SchoolDetailsPage(),
-          IndexPage.id: (context) => IndexPage()
+          IndexPage.id: (context) => IndexPage(),
+          QuestionBook.id: (context) => QuestionBook()
         },
       ),
     );

@@ -1,7 +1,7 @@
-import 'package:edmissions/themes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../themes.dart';
 import 'home.dart';
 import 'login.dart';
 
@@ -16,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
   // CustomUser? _user;
   Future<void> navigate() async {
     final _user = FirebaseAuth.instance.currentUser;
-    return Future.delayed(Duration(milliseconds: 500), () async {
+    return Future.delayed(Duration(milliseconds: 100), () async {
       if (_user == null)
         Navigator.popAndPushNamed(context, LoginPage.id);
       else {

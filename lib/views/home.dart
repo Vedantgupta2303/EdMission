@@ -1,10 +1,9 @@
-import 'package:edmissions/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../models/tabs.dart';
+import '../themes.dart';
 import '../widgets/fab.dart';
 
 class HomePage extends StatefulWidget {
@@ -45,7 +44,8 @@ class _HomePageState extends State<HomePage> {
                             decoration: BoxDecoration(
                               image: kBackgroundImage,
                             ),
-                            child: Provider.of<TabViews>(context).getTabView(),
+                            child: Provider.of<TabViews>(context)
+                                .getTabView(context),
                           ),
                         ),
                         Provider.of<TabViews>(context, listen: false)

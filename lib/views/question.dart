@@ -10,14 +10,15 @@ import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'package:flutter_card_swipper/widgets/flutter_page_indicator/flutter_page_indicator.dart';
 import 'package:provider/provider.dart';
 
-import '../../constants.dart';
+import '../constants.dart';
 
-class HistoryTab extends StatefulWidget {
+class QuestionBook extends StatefulWidget {
+  static String id = 'questionPage';
   @override
-  _HistoryTabState createState() => _HistoryTabState();
+  _QuestionBookState createState() => _QuestionBookState();
 }
 
-class _HistoryTabState extends State<HistoryTab> {
+class _QuestionBookState extends State<QuestionBook> {
   List<String> question = [
     'Admission Sought for Class*',
     'Name of the Pupil*',
@@ -272,117 +273,134 @@ class _HistoryTabState extends State<HistoryTab> {
         ],
       ),
     ];
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          stops: [
-            0.1,
-            0.4,
-            0.6,
-            0.9,
-          ],
-          colors: [
-            Colors.yellow,
-            Colors.red,
-            Colors.indigo,
-            Colors.teal,
-          ],
-        ),
-      ),
-      padding: EdgeInsets.all(20),
-      child: Center(
-        child: Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            Swiper(
-              loop: false,
-              indicatorLayout: PageIndicatorLayout.COLOR,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.blueGrey.shade50, blurRadius: 10)
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Question ${index + 1}/${formWidgets.length}',
-                              style: kHeading3.copyWith(
-                                color: Colors.pink,
-                                fontSize: 20,
-                              ),
-                            ),
-                            Spacer(),
-                            InkWell(
-                              onTap: () {
-                                kShowSnackBar(
-                                    context,
-                                    'Swipe Right to contine to next question',
-                                    true);
-                              },
-                              child: Icon(
-                                Icons.swipe,
-                                size: 28,
-                                color: Colors.amber,
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        formWidgets[index]
-                      ],
-                    ),
-                  ),
-                  width: 300,
-                  height: 400,
-                );
-              },
-              itemCount: formWidgets.length,
-              itemWidth: 350.0,
-              itemHeight: 400,
-              layout: SwiperLayout.TINDER,
-              pagination: new SwiperPagination(margin: new EdgeInsets.all(5.0)),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Questionnaire',
-                  textAlign: TextAlign.center,
-                  style: kHeading1.copyWith(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
-                Spacer(),
-                ClayContainer(
-                    spread: 0,
-                    color: Colors.red,
-                    parentColor: Color(0xffF2F7FC),
-                    depth: 2,
-                    width: 100,
-                    height: 34,
-                    borderRadius: 15,
-                    child: Center(
-                      child: Text(
-                        "Pending",
-                        style: kHeading3.copyWith(color: Colors.white),
-                      ),
-                    ))
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              stops: [
+                0.1,
+                0.4,
+                0.6,
+                0.9,
+              ],
+              colors: [
+                Colors.yellow,
+                Colors.red,
+                Colors.indigo,
+                Colors.teal,
               ],
             ),
-          ],
+          ),
+          padding: EdgeInsets.all(20),
+          child: Center(
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                Swiper(
+                  loop: false,
+                  indicatorLayout: PageIndicatorLayout.COLOR,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.blueGrey.shade50, blurRadius: 10)
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Question ${index + 1}/${formWidgets.length}',
+                                  style: kHeading3.copyWith(
+                                    color: Colors.pink,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                Spacer(),
+                                InkWell(
+                                  onTap: () {
+                                    kShowSnackBar(
+                                        context,
+                                        'Swipe Right to contine to next question',
+                                        true);
+                                  },
+                                  child: Icon(
+                                    Icons.swipe,
+                                    size: 28,
+                                    color: Colors.amber,
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            formWidgets[index]
+                          ],
+                        ),
+                      ),
+                      width: 300,
+                      height: 400,
+                    );
+                  },
+                  itemCount: formWidgets.length,
+                  itemWidth: 350.0,
+                  itemHeight: 400,
+                  layout: SwiperLayout.TINDER,
+                  pagination:
+                      new SwiperPagination(margin: new EdgeInsets.all(5.0)),
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 34,
+                      width: 34,
+                      margin: EdgeInsets.only(right: 10),
+                      child: ClayContainerHighlight(
+                        iconData: CupertinoIcons.arrow_left,
+                        onTap: () {
+                          print('tapped');
+                          Navigator.popAndPushNamed(context, HomePage.id);
+                        },
+                      ),
+                    ),
+                    Text(
+                      'Questionnaire',
+                      textAlign: TextAlign.center,
+                      style: kHeading1.copyWith(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Spacer(),
+                    ClayContainer(
+                        spread: 0,
+                        color: Colors.red,
+                        parentColor: Color(0xffF2F7FC),
+                        depth: 2,
+                        width: 100,
+                        height: 34,
+                        borderRadius: 15,
+                        child: Center(
+                          child: Text(
+                            "Pending",
+                            style: kHeading3.copyWith(color: Colors.white),
+                          ),
+                        ))
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

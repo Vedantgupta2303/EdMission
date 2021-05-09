@@ -1,3 +1,4 @@
+import 'package:edmissions/views/question.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../views/tabs/cart.dart';
@@ -18,7 +19,7 @@ class TabViews extends ChangeNotifier {
     notifyListeners();
   }
 
-  Widget getTabView() {
+  Widget getTabView(BuildContext context) {
     Widget ob;
     ob = DashBoardTab();
     switch (selectedIndex) {

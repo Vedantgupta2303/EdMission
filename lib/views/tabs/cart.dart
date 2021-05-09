@@ -1,17 +1,15 @@
 import 'package:clay_containers/widgets/clay_container.dart';
-import 'package:edmissions/models/tabs.dart';
-import 'package:edmissions/services/validation.dart';
-import 'package:edmissions/views/home.dart';
-import 'package:edmissions/widgets/inputTextFields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../../constants.dart';
+import '../../models/tabs.dart';
+import '../../services/validation.dart';
 import '../../widgets/clayContainerHighlight.dart';
+import '../../widgets/inputTextFields.dart';
 import '../../widgets/submitBtn.dart';
-import 'user.dart';
 import '../details.dart';
 
 class CartTab extends StatefulWidget {
@@ -142,6 +140,9 @@ class _CartTabState extends State<CartTab> {
                 SizedBox(
                   height: 20,
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Row(
                   children: [
                     CircleAvatar(
@@ -263,10 +264,10 @@ class _CartTabState extends State<CartTab> {
                                             style: kHeading4,
                                           ),
                                           value: interview[index],
-                                          groupValue: selectedSlot,
+                                          groupValue: selectedInterview,
                                           onChanged: (value) {
                                             setState(() {
-                                              selectedSlot = value;
+                                              selectedInterview = value;
                                             });
                                           },
                                         );

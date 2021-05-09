@@ -1,11 +1,10 @@
-import 'package:edmissions/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
 
+import '../constants.dart';
 import '../services/auth.dart';
 import '../services/validation.dart';
 import '../widgets/clayContainerHighlight.dart';

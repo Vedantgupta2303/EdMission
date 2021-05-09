@@ -1,4 +1,3 @@
-import 'package:edmissions/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -7,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../constants.dart';
 import '../services/auth.dart';
 import '../services/validation.dart';
+import '../themes.dart';
 import '../widgets/choiceButtons.dart';
 import '../widgets/inputTextFields.dart';
 import '../widgets/submitBtn.dart';

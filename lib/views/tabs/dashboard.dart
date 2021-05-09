@@ -1,10 +1,10 @@
-import 'package:edmissions/views/details.dart';
-import 'package:edmissions/widgets/submitBtn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 import '../../widgets/clayContainerHighlight.dart';
+import '../../widgets/submitBtn.dart';
+import '../details.dart';
 
 class DashBoardTab extends StatefulWidget {
   @override

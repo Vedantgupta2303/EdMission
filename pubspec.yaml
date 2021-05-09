@@ -57,6 +57,8 @@ dependencies:
   agora_rtc_engine: ^4.0.0-rc.3
   permission_handler: ^7.1.0
   razorpay_flutter: ^1.2.5
+  flutter_card_swipper: ^0.4.0
+  
 
 dev_dependencies:
   flutter_test:

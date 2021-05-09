@@ -1,17 +1,17 @@
 import 'dart:async';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
-import 'package:edmissions/constants.dart';
-import 'package:edmissions/widgets/clayContainerHighlight.dart';
-import 'package:edmissions/widgets/inputTextFields.dart';
-import 'package:edmissions/widgets/submitBtn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../themes.dart';
-import './call.dart';
+import '../../constants.dart';
 import '../../services/validation.dart';
+import '../../themes.dart';
+import '../../widgets/clayContainerHighlight.dart';
+import '../../widgets/inputTextFields.dart';
+import '../../widgets/submitBtn.dart';
+import 'call.dart';
 
 class IndexPage extends StatefulWidget {
   static String id = 'indexPage';
