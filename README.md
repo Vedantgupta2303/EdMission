@@ -75,10 +75,13 @@ To get a local copy up and running follow these simple example steps.
 * A few other dependencies that are listed below will be required.
 
 ### Dependencies
-|Dependency| Description|
+Listed below are some major dependencies list, for the complete list visit [pubspec.yaml](https://github.com/Vedantgupta2303/EdMission/blob/master/pubspec.yaml)
+|Dependency| Version|
 |----------|------------|
-| .|. |
-| .|. |
+| Agora|agora_rtc_engine: ^4.0.0-rc.3 |
+| RazorPay|razorpay_flutter: ^1.2.5 |
+| Provider| provider: ^5.0.0|
+| Firebase Package| firebase_core: ^1.0.2|
 
 ### Installation
 The drive link to the latest APK can be found [here](https://drive.google.com/file/d/1BQC2p_bGEaDFPKEt-K50rvE5S0xf9wrZ/view?usp=sharing)
