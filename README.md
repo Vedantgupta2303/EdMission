@@ -12,13 +12,12 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="assets/logo.png" alt="Logo" width="80" height="80">
+    <img src="setup/logo.png" alt="Logo" width="80" height="80">
 
   <h3 align="center">EdMission</h3>
 
@@ -33,7 +32,7 @@
     ·
     <a href="https://github.com/Vedantgupta2303/EdMission/issues/new">Request Feature</a>
     .
-    <a href="">Project Report</a>
+    <a href="https://docs.google.com/document/d/1AvjmpZW3YEtSYxRsifFd0P2zuNfmUMBU4deRhDOUBUI/edit?usp=sharing">Project Report</a>
   </p>
 </p>
 
@@ -70,8 +69,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][screenshot]](https://example.com)
-
 Team Techquilla has come up with a one-stop platform for parents who can enrol with us for their child’s school admission. They are required to fill just one single common application form to apply to all schools in their city. The platform provides the following information from the comfort of their houses:
 * No. of vacancies in each school
 * Notification of opening of admissions in every school they put in their wishlist
@@ -102,7 +99,8 @@ This is an example of how you may set up the project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
-
+* Flutter setup is required before you can create a local copy of the project. Please follow the steps given in [flutter-setup.md](setup/flutter-setup.md)
+* A few other dependencies that are listed below will be required.
 
 ### Dependencies
 |Dependency| Description|
@@ -111,14 +109,11 @@ To get a local copy up and running follow these simple example steps.
 | .|. |
 
 ### Installation
-
-
-
+The drive link to the latest APK can be found [here](https://drive.google.com/)
 
 <!-- USAGE EXAMPLES -->
 ## Screenshots
-
-
+![login-ss](setup/login-ss.jpeg) ![ss1](setup/ss1.jpeg) ![ss2](setup/ss2.jpeg) ![ss3](setup/ss3.jpeg) ![ss4](setup/ss4.jpeg) ![ss5](setup/ss5.jpeg) ![vc-ss](setup/vc-ss.jpeg)
 
 
 <!-- ROADMAP -->
