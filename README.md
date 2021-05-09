@@ -37,35 +37,6 @@
 </p>
 
 
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#dependencies">Dependencies</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contributors">Contributors</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -114,13 +85,7 @@ The drive link to the latest APK can be found [here](https://drive.google.com/)
 <!-- USAGE EXAMPLES -->
 ## Screenshots
 
-<img src="https://github.com/Vedantgupta2303/EdMission/setup/login-ss.jpeg"  width="100" height="200">
-<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss1.jpeg"  width="100" height="200">
-<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss2.jpeg"  width="100" height="200">
-<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss3.jpeg"  width="100" height="200">
-<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss4.jpeg"  width="100" height="200">
-<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss5.jpeg"  width="100" height="200">
-<img src="https://github.com/Vedantgupta2303/EdMission/setup/vc-ss.jpeg"  width="100" height="200">
+<img src="https://github.com/Vedantgupta2303/EdMission/setup/login-ss.jpeg"  width="100" height="200">  <img src="https://github.com/Vedantgupta2303/EdMission/setup/ss1.jpeg"  width="100" height="200">  <img src="https://github.com/Vedantgupta2303/EdMission/setup/ss2.jpeg"  width="100" height="200">  <img src="https://github.com/Vedantgupta2303/EdMission/setup/ss3.jpeg"  width="100" height="200">  <img src="https://github.com/Vedantgupta2303/EdMission/setup/ss4.jpeg"  width="100" height="200">  <img src="https://github.com/Vedantgupta2303/EdMission/setup/ss5.jpeg"  width="100" height="200">  <img src="https://github.com/Vedantgupta2303/EdMission/setup/vc-ss.jpeg"  width="100" height="200">
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -168,4 +133,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [issues-shield]: https://img.shields.io/github/issues/Vedantgupta2303/EdMission.svg?style=for-the-badge
 [issues-url]: https://github.com/Vedantgupta2303/EdMission/issues
 [license-shield]: https://img.shields.io/github/license/Vedantgupta2303/EdMission.svg?style=for-the-badge
-[license-url]: https://github.com/Vedantgupta2303/EdMission/blob/master/LICENSE.txt
+[license-url]: https://github.com/Vedantgupta2303/EdMission/blob/master/LICENSE
