@@ -17,7 +17,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="setup/logo.png" alt="Logo" width="80" height="80">
+    <img src="setup/logo.png" alt="Logo" width="350" height="350">
 
   <h3 align="center">EdMission</h3>
 
@@ -113,8 +113,14 @@ The drive link to the latest APK can be found [here](https://drive.google.com/)
 
 <!-- USAGE EXAMPLES -->
 ## Screenshots
-![login-ss](setup/login-ss.jpeg) ![ss1](setup/ss1.jpeg) ![ss2](setup/ss2.jpeg) ![ss3](setup/ss3.jpeg) ![ss4](setup/ss4.jpeg) ![ss5](setup/ss5.jpeg) ![vc-ss](setup/vc-ss.jpeg)
 
+<img src="https://github.com/Vedantgupta2303/EdMission/setup/login-ss.jpeg"  width="100" height="200">
+<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss1.jpeg"  width="100" height="200">
+<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss2.jpeg"  width="100" height="200">
+<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss3.jpeg"  width="100" height="200">
+<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss4.jpeg"  width="100" height="200">
+<img src="https://github.com/Vedantgupta2303/EdMission/setup/ss5.jpeg"  width="100" height="200">
+<img src="https://github.com/Vedantgupta2303/EdMission/setup/vc-ss.jpeg"  width="100" height="200">
 
 <!-- ROADMAP -->
 ## Roadmap
