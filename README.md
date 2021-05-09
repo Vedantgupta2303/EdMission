@@ -24,7 +24,7 @@
   <p align="center">
     Admissions Re-imagined!
     <br />
-    <a href=""><strong>Install APK</strong></a>
+    <a href="https://drive.google.com/file/d/1BQC2p_bGEaDFPKEt-K50rvE5S0xf9wrZ/view?usp=sharing"><strong>Install APK</strong></a>
     <br />
     <br />
     ·
@@ -81,7 +81,7 @@ To get a local copy up and running follow these simple example steps.
 | .|. |
 
 ### Installation
-The drive link to the latest APK can be found [here](https://drive.google.com/)
+The drive link to the latest APK can be found [here](https://drive.google.com/file/d/1BQC2p_bGEaDFPKEt-K50rvE5S0xf9wrZ/view?usp=sharing)
 
 <!-- USAGE EXAMPLES -->
 ## Screenshots
