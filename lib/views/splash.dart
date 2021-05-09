@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
           image: kBackgroundImage,
         ),
         child: Image.asset(
-          'assets/images/logo_dark.png',
+          'assets/images/logo-new.jpeg',
         ),
       ),
     ));
