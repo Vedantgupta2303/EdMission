@@ -39,12 +39,16 @@ class _SplashPageState extends State<SplashPage> {
     return SafeArea(
         child: Scaffold(
       body: Container(
+        width: double.infinity,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           image: kBackgroundImage,
         ),
         child: Image.asset(
-          'assets/images/logo-new.jpeg',
+          'assets/images/EdMission200.png',
+          height: 100,
+          width: 100,
+          fit: BoxFit.scaleDown,
         ),
       ),
     ));
